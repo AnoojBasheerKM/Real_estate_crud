@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+
+
+{%block main_block%}
+
+<div class="container">
+    <div> 
+      <h1 style="align-items: center;">Property List</h1>
+    </div>
+      <div class="row">
+          {% for p in data%}
+
+          <div class="col-3 pt-3">
+            <div class="card" style="width:100%">
+             {%if p in picture%}
+             <img src="{{p.picture.url}}" class="card-img-top" alt="...">
+             {%endif%}
+                <div class="card-body">
+                  <h5 class="card-title">{{p.price}}</h5>
+                  <p class="card-text">Address:{{p.address}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{p.property_type}}</li>
+                  <li class="list-group-item">{{p.square_footage}}</li>
+                  <li class="list-group-item">{{p.location}}</li>
+                </ul>
+                <div class="card-body">
+                    
+                    <a href="{%url 'property-edit' p.id%}" class="card-link">Edit</a>
+                    <a href="{%url 'property-delete' p.id%}" class="card-link">Delete</a>
+                  </div>
+               
+              </div>
+              
+           </div>
+
+          {%endfor%}
+  
+     
+      </div>
+  </div>
+
+{%endblock%}
