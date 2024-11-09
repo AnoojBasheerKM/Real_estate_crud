@@ -58,7 +58,7 @@ class PropertyEditView(View):
         
         form_instance = self.form_class(instance=property_object)
         
-        return render(self.template_name,{"form":form_instance})
+        return render(request,self.template_name,{"form":form_instance})
     
     def post(self,request,*args,**kwargs):
         
@@ -75,7 +75,7 @@ class PropertyEditView(View):
             form_instance.save()
             
             return redirect("property-list")
-        return render(self.template_name,{"form":form_instance})
+        return render(request,self.template_name,{"form":form_instance})
     
 
 class PropertyDeleteView(View):
